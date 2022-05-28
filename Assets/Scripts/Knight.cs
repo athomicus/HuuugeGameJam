@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knight : MonoBehaviour
+public class Knight : MonoBehaviour, IDamageable
 {
+    [SerializeField]
+    private Animator _Animator = null;
+
     [SerializeField]
     private float _MoveTime = 5.0f;
 
@@ -16,45 +19,70 @@ public class Knight : MonoBehaviour
 
     private float _timeElapsed = 0f;
 
-    private eKnightState _knightState = eKnightState.Standing;
+    private eCharacterState _knightState = eCharacterState.Attacking;
+
+    [SerializeField]
+    private float _MaxHealth = 80.0f;
+
+    public float MaxHealth { get => _MaxHealth; set => _MaxHealth = value; }
+    public float Health { get; set; }
+    public void Damage( float damage )
+    {
+        Health -= damage;
+    }
 
     public void StartMoving( Vector3 target_pos )
     {
         _timeElapsed = 0f;
         _startPosition = transform.position;
         _endPosition = target_pos;
-        _knightState = eKnightState.Dashing;
+        _knightState = eCharacterState.Moving;
 
         // TODO: Play the moving animation.
     }
-    public void StartStanding()
+
+    public void StartAttacking()
     {
         _timeElapsed = 0f;
-        _knightState = eKnightState.Standing;
+        _knightState = eCharacterState.Attacking;
 
-        // TODO: Play the standing animation.
+        // TODO: Play the attacking animation.
+    }
+
+    public void StartDying()
+    {
+
+    }
+
+    private void Start()
+    {
+        Health = MaxHealth;
+
+        _Animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         switch( _knightState )
         {
-            case eKnightState.Standing:
+            case eCharacterState.Attacking:
 
                 if( _timeElapsed >= _AttackFrequency )
                 {
                     Attack();
                     _timeElapsed = 0f;
                 }
-
                 break;
-            case eKnightState.Dashing:
 
+            case eCharacterState.Moving:
                 
                 transform.position = Interpolate( _startPosition, _endPosition, _timeElapsed / _MoveTime );
 
-                if( _timeElapsed >= _MoveTime ) StartStanding();
+                if( _timeElapsed >= _MoveTime ) StartAttacking();
                 break;
+
+            case eCharacterState.Dead:
+                return;
         }
 
         _timeElapsed += Time.deltaTime;
@@ -77,5 +105,5 @@ public class Knight : MonoBehaviour
 
     }
 
-    private enum eKnightState { Standing, Dashing }
 }
+public enum eCharacterState { Attacking, Moving, Dead }

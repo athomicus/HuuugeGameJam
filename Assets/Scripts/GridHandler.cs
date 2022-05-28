@@ -19,7 +19,9 @@ public class GridHandler : MonoBehaviour
 
     private GridButton[,] _buttonGrid = null;
 
-    private void Start()
+    public Vector2Int GridSize => _GridSize;
+
+    private void Awake()
     {
         _gridLayoutGroup = GetComponent<GridLayoutGroup>();
 
@@ -81,5 +83,5 @@ public class GridHandler : MonoBehaviour
         };
     }
 
-    private Vector3 GetButtonPosition( Vector2Int pos ) => _buttonGrid[ pos.x, pos.y ].WorldPosition;
+    public Vector3 GetButtonPosition( Vector2Int pos ) => _buttonGrid[ pos.x, pos.y ].WorldPosition;
 }
