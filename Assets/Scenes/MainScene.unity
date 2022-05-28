@@ -196,9 +196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc378ac7f325ec4c94a31c11d8e1b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _KnightPrefab: {fileID: 1390522005178611621, guid: 8323c9d9815af38459c3522c86f2a3fe,
+  _KnightPrefab: {fileID: 4337131788581819109, guid: 192c5d03f6affb4448e2ab21c2a10013,
     type: 3}
-  _ArcherPrefab: {fileID: 1390522005178611621, guid: 8323c9d9815af38459c3522c86f2a3fe,
+  _ArcherPrefab: {fileID: 3629427571465326524, guid: 7b0fd435bae7dc96bbee9aae91930e68,
     type: 3}
   _ButtonPrefab: {fileID: 5480101368812517733, guid: 98450a5071a125343adb930d29a7d831,
     type: 3}

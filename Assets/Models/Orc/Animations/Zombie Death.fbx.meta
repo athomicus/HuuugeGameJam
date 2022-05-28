@@ -1,65 +1,14 @@
 fileFormatVersion: 2
-guid: d19750912cba608b6a75a05905774fdd
+guid: df55bec9b8b0288dd8476da90388f999
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 4756690996396011551
-    second: Camera|Armature|mixamo.com|Layer0
+      74: 1827226128182048838
+    second: die
   - first:
-      74: -8163984703036636009
-    second: Camera|Camera|Take 001|Layer 001
-  - first:
-      74: -3577948729454352249
-    second: Camera|Directional Light|Take 001|Layer 001
-  - first:
-      74: 2977595913854576119
-    second: Camera|Texture Group|Take 001|Layer 001
-  - first:
-      74: 3154208667133209506
-    second: Texture Group|Armature|mixamo.com|Layer0
-  - first:
-      74: -6126325045238124917
-    second: Texture Group|Camera|Take 001|Layer 001
-  - first:
-      74: -8498303250049754730
-    second: Texture Group|Directional Light|Take 001|Layer 001
-  - first:
-      74: 4942489634596724470
-    second: Texture Group|Texture Group|Take 001|Layer 001
-  - first:
-      74: -3299398564414252131
-    second: Directional Light|Armature|mixamo.com|Layer0
-  - first:
-      74: 8795696792602502721
-    second: Directional Light|Camera|Take 001|Layer 001
-  - first:
-      74: -3190873513113683535
-    second: Directional Light|Directional Light|Take 001|Layer 001
-  - first:
-      74: -8813710333596313748
-    second: Directional Light|Texture Group|Take 001|Layer 001
-  - first:
-      74: 885944232402757753
-    second: Idle
-  - first:
-      74: -4791504522942941401
-    second: Armature|Armature|mixamo.com|Layer0
-  - first:
-      74: 6165553400957861818
-    second: Armature|Armature|mixamo.com|Layer0.001
-  - first:
-      74: 3591740854655688942
-    second: Armature|Armature|mixamo.com|Layer0.002
-  - first:
-      74: 782990864433522433
-    second: Armature|Camera|Take 001|Layer 001
-  - first:
-      74: -8568032196820998243
-    second: Armature|Directional Light|Take 001|Layer 001
-  - first:
-      74: 5589805900059930633
-    second: Armature|Texture Group|Take 001|Layer 001
+      74: -203655887218126122
+    second: death
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -89,11 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
-      takeName: Armature|Action
+      name: death
+      takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 263
+      lastFrame: 103
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
