@@ -77,7 +77,7 @@ public class GridHandler : MonoBehaviour
         _buttonGrid[ grid_pos.x, grid_pos.y ].ObjectAtButton = new GridButton.OccupyingObject
         {
             gridPosition = grid_pos,
-            gameObject = obj
+            knight = obj.GetComponent<Knight>()
         };
     }
 

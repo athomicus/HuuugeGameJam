@@ -44,7 +44,7 @@ public class GridButton : Button
 
             // TODO: start moving the knight, playing the animation...
 
-            ObjectAtButton.gameObject.transform.position = WorldPosition;
+            ObjectAtButton.knight.StartMoving( WorldPosition );
 
             return;
         }
@@ -97,7 +97,7 @@ public class GridButton : Button
         {
             for( int j = grid_pos.y - 1; j <= grid_pos.y + 1; ++j )
             {
-                // If the indeces are out of bounds, skip them.
+                    // If the indeces are out of bounds, skip them.
                 if( i < 0 || j < 0 ) continue;
                 if( i >= Grid.GetLength( 0 ) || j >= Grid.GetLength( 1 ) ) continue;
 
@@ -109,6 +109,6 @@ public class GridButton : Button
     public class OccupyingObject
     {
         public Vector2Int gridPosition = Vector2Int.zero;
-        public GameObject gameObject = null;
+        public Knight knight = null;
     }
 }
