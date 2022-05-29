@@ -80,7 +80,7 @@ public class Orc : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        OnDeath += StartDancing;
+        Gate.OnLose += StartDancing;
 
         Health = MaxHealth;
 
@@ -91,7 +91,7 @@ public class Orc : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-        OnDeath -= StartDancing;
+        Gate.OnLose -= StartDancing;
     }
 
     private void Update()
@@ -167,6 +167,8 @@ public class Orc : MonoBehaviour, IDamageable
     private void Die()
     {
         OnDeath?.Invoke();
+
+        Destroy( GetComponentInChildren<HealthBar>().gameObject );
 
         _characterState = eCharacterState.Dead;
 

@@ -15,8 +15,22 @@ public class OrcSpawner : MonoBehaviour
 
     private float _timeElapsed = 0.0f;
 
+    private bool _spawning = true;
+
+    private void Awake()
+    {
+        Gate.OnLose += StopSpawning;
+    }
+
+    private void OnDestroy()
+    {
+        Gate.OnLose -= StopSpawning;
+    }
+
     private void Update()
     {
+        if( !_spawning ) return;
+
         _timeElapsed += Time.deltaTime;
 
         if( _timeElapsed < _SpawnFrequency ) return;
@@ -28,6 +42,8 @@ public class OrcSpawner : MonoBehaviour
         SpawnOrc();
 
     }
+
+    private void StopSpawning() => _spawning = false;
 
     private void SpawnOrc()
     {

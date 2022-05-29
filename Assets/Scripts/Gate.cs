@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +15,9 @@ public class Gate : MonoBehaviour, IDamageable
 
     [SerializeField]
     private AudioClip _AudioClip = null;
-    
+
+    public static event Action OnLose;
+
     public float MaxHealth { get => _MaxHealth; set => _MaxHealth = value; }
     public float Health { get; set; }
 
@@ -71,6 +73,7 @@ public class Gate : MonoBehaviour, IDamageable
 
         // End the game
 
+        OnLose?.Invoke();
         
         var hi_score = FindObjectOfType<SaveLoadHighScore>();
         hi_score.SetPlayerHighscores( score );

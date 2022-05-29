@@ -70,6 +70,8 @@ public class Knight : MonoBehaviour, IDamageable
             // Disable the collider.
         GetComponent<CapsuleCollider>().enabled = false;
 
+        Destroy( GetComponentInChildren<HealthBar>().gameObject );
+
         _Animator.Play( "death" );
     }
 
@@ -88,6 +90,8 @@ public class Knight : MonoBehaviour, IDamageable
         Health = MaxHealth;
 
         _Animator = GetComponent<Animator>();
+
+        Gate.OnLose += StartDying;
     }
 
     private void Update()
