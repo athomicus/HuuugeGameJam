@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class SaveLoadHighScore : MonoBehaviour
  {
 
- public int score = 0;
  public int highScore = 0;
  public Text text;
  string highScoreKey = "HighScore";
@@ -14,14 +13,15 @@ public class SaveLoadHighScore : MonoBehaviour
      void Start()
      {
          //Get the highScore from player prefs if it is there, 0 otherwise.
-         highScore = PlayerPrefs.GetInt(highScoreKey,0);   
-         text.text = "HighScore: " + score.ToString(); 
+         highScore = PlayerPrefs.GetInt(highScoreKey,0);
+        if( text == null ) return;
+         text.text = "HighScore: " + highScore.ToString(); 
      }
 public void SetPlayerHighscores(int scorePoints)
 {
-    if(score>highScore)
+    if( scorePoints > highScore)
     {
-             PlayerPrefs.SetInt(highScoreKey, score);
+             PlayerPrefs.SetInt(highScoreKey, scorePoints );
              PlayerPrefs.Save();
     }
 }

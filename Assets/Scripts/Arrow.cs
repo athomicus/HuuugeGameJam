@@ -48,8 +48,8 @@ public class Arrow : MonoBehaviour
 
  private void OnDrawGizmosSelected()
    {
-    Gizmos.color = Color.red;
-     Gizmos.DrawSphere(origin,sphereRadius);
+        Gizmos.color = new Color( 1, 0, 0, .75f );
+        Gizmos.DrawLine( transform.position, transform.position + transform.forward * maxDistance );
    }
          
  

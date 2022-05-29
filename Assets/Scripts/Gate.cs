@@ -20,9 +20,14 @@ public class Gate : MonoBehaviour, IDamageable
     private float _endElevation = 0.0f;
     private float _timeElapsed = 0.0f;
 
+    public static int score = 0;
+
+    private void IncreaseScore() => score += 2;
+
     private void Awake()
     {
         Orc.OnDeath += RaiseTheBarrier;
+        Orc.OnDeath += IncreaseScore;
 
             // The gate has 2 hit points initially.
         _MaxHealth = 2 * _ElevationOffset;
@@ -33,6 +38,7 @@ public class Gate : MonoBehaviour, IDamageable
     private void OnDestroy()
     {
         Orc.OnDeath -= RaiseTheBarrier;
+        Orc.OnDeath -= IncreaseScore;
     }
 
     private void Update()
@@ -61,6 +67,12 @@ public class Gate : MonoBehaviour, IDamageable
         print( "END OF THE GAME" );
 
         // End the game
+
+        
+        var hi_score = FindObjectOfType<SaveLoadHighScore>();
+        hi_score.SetPlayerHighscores( score );
+
+        print( score );
     }
 
     public void RaiseTheBarrier()
@@ -68,7 +80,7 @@ public class Gate : MonoBehaviour, IDamageable
         _timeElapsed = 0.0f;
         _startElevation = transform.position.y;
         _endElevation = _startElevation + _ElevationOffset;
-        _MaxHealth += _ElevationOffset;
+        _MaxHealth += 1.01f * _ElevationOffset;
         Health = MaxHealth;
     }
 }
