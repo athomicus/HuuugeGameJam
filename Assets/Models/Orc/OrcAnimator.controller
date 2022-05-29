@@ -124,9 +124,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -5217312303491344244}
     m_Position: {x: 225, y: 315, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8099467662747441858}
-    m_Position: {x: 420, y: 240, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -136,7 +133,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 5886554760791277265}
+  m_DefaultState: {fileID: 1511426802257755023}
 --- !u!1102 &1511426802257755023
 AnimatorState:
   serializedVersion: 6
@@ -178,9 +175,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.8
   m_TransitionOffset: 0
-  m_ExitTime: 0.5
+  m_ExitTime: 0.2
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -194,7 +191,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: fightBack
-  m_Speed: -1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2416974782804995180}
@@ -227,9 +224,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.1
   m_TransitionOffset: 0
-  m_ExitTime: 0.01
+  m_ExitTime: 0.02
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
