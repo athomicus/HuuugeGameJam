@@ -21,6 +21,8 @@ public class OrcSpawner : MonoBehaviour
 
         if( _timeElapsed < _SpawnFrequency ) return;
 
+        _SpawnFrequency = 4.0f / Mathf.Pow( Gate.score + 1, .25f );
+
         _timeElapsed = 0.0f;
 
         SpawnOrc();

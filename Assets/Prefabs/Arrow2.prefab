@@ -96,6 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   speed: 8
-  maxDistance: 1
+  maxDistance: 0.1
   origin: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}

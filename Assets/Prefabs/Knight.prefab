@@ -484,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Animator: {fileID: 0}
   _MoveTime: 0.1
-  _Damage: 10
+  _Damage: 35
   _AttackDistance: 2
   _AttackRadius: 1
   _MaxHealth: 80
