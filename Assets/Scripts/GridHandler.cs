@@ -74,7 +74,9 @@ public class GridHandler : MonoBehaviour
 
     private void CreateKnight( GameObject prefab, Vector2Int grid_pos )
     {
-        var obj = Instantiate( prefab, GetButtonPosition( grid_pos ), Quaternion.identity );
+        var rot = Quaternion.Euler( 0, 180, 0 );
+
+        var obj = Instantiate( prefab, GetButtonPosition( grid_pos ), rot );
 
         _buttonGrid[ grid_pos.x, grid_pos.y ].ObjectAtButton = new GridButton.OccupyingObject
         {

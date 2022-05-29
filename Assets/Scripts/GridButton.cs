@@ -36,6 +36,13 @@ public class GridButton : Button
         {
             UnhighlightAvailableButtons();
 
+                // This checks if the clicked position is within the knight's movement range.
+            if( ( _selectedObject.gridPosition - GridPosition ).sqrMagnitude > 2 )
+            {
+                _selectedObject = null;
+
+                return;
+            }
             ObjectAtButton = _selectedObject;
             var pos = ObjectAtButton.gridPosition;
             Grid[ pos.x, pos.y ].ObjectAtButton = null;

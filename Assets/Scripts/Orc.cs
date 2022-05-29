@@ -55,7 +55,7 @@ public class Orc : MonoBehaviour, IDamageable
     {
         Health -= damage;
 
-        Health = Mathf.Min( Health, MaxHealth );
+        Health = Mathf.Clamp( Health, 0, MaxHealth );
     }
 
     private void Start()
@@ -117,11 +117,23 @@ public class Orc : MonoBehaviour, IDamageable
     {
         _characterState = eCharacterState.Attacking;
         // Play the animation.
+
+        _Animator.Play( "fight" );
+    }
+
+    private void StartMoving()
+    {
+        _characterState = eCharacterState.Moving;
+
+        _Animator.Play( "WalkingOrc" );
     }
 
     private void Attack()
     {
         int n = Physics.OverlapCapsuleNonAlloc( transform.position, EndPoint, _AttackRadius, _colliderBuffer );
+
+        int hit_knights = 0;
+        int hit_objects = 0;
 
         for( int i = 0; i < n; ++i )
         {
@@ -134,6 +146,16 @@ public class Orc : MonoBehaviour, IDamageable
             if( col.GetComponent<Orc>() != null ) continue;
 
             col.GetComponent<IDamageable>()?.Damage( damage );
+
+            ++hit_objects;
+
+            hit_knights += col.GetComponent<Knight>() != null ? 1 : 0;
+        }
+
+        if( hit_knights == 0 && hit_objects == 0 )
+        {
+            StartMoving();
+            return;
         }
     }
 }
