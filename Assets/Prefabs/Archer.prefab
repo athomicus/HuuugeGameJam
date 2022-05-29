@@ -277,6 +277,36 @@ Transform:
   m_Father: {fileID: 2093160201998714693}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2238474822194821160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5324251529330530752}
+  m_Layer: 0
+  m_Name: ArrowSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5324251529330530752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238474822194821160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.044, z: 0.16499996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4113336260444247302}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3109268364228222550
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +413,7 @@ GameObject:
   - component: {fileID: 4113336260444247302}
   - component: {fileID: 3629427571465326521}
   - component: {fileID: 3629427571465326522}
-  - component: {fileID: 3629427571465326523}
+  - component: {fileID: 883826490}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -405,6 +435,7 @@ Transform:
   - {fileID: 8606420070809892294}
   - {fileID: 8450392572061103506}
   - {fileID: 2354624050823684809}
+  - {fileID: 5324251529330530752}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -441,7 +472,7 @@ CapsuleCollider:
   m_Height: 1.566966
   m_Direction: 1
   m_Center: {x: -0.012262821, y: 0.80323887, z: 0}
---- !u!114 &3629427571465326523
+--- !u!114 &883826490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -450,15 +481,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3629427571465326524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0af2e56b6774c4ba53aeac9926bea5, type: 3}
+  m_Script: {fileID: 11500000, guid: ca0eb130e153c7c4eace291a527988ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Animator: {fileID: 0}
-  _MoveTime: 0.1
-  _Damage: 10
+  _MoveTime: 5
+  _Damage: 0
   _AttackDistance: 2
   _AttackRadius: 1
   _MaxHealth: 80
+  _ArrowPrefab: {fileID: 6186364853817681431, guid: 2679af566996f495db091899cb647b0a,
+    type: 3}
+  _spawnArrowPosition: {fileID: 5324251529330530752}
 --- !u!1 &4359513644194033835
 GameObject:
   m_ObjectHideFlags: 0
