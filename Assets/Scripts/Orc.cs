@@ -20,6 +20,9 @@ public class Orc : MonoBehaviour, IDamageable
     [SerializeField]
     private Animator _Animator = null;
 
+    [SerializeField]
+    private AudioClip _SpawnAudio = null;
+
         // The collider buffer, its length is the maximal collision count.
     private static readonly Collider[] _colliderBuffer = new Collider[ 10 ];
 
@@ -66,11 +69,29 @@ public class Orc : MonoBehaviour, IDamageable
         Die();
     }
 
+    private void PlaySound( AudioClip clip )
+    {
+        var clipPosition = Camera.main.transform.position;
+        if( clip != null )
+        {
+            AudioSource.PlayClipAtPoint( clip, clipPosition );
+        }
+    }
+
     private void Awake()
     {
+        OnDeath += StartDancing;
+
         Health = MaxHealth;
 
         _Animator = GetComponent<Animator>();
+
+        PlaySound( _SpawnAudio );
+    }
+
+    private void OnDestroy()
+    {
+        OnDeath -= StartDancing;
     }
 
     private void Update()
@@ -134,6 +155,13 @@ public class Orc : MonoBehaviour, IDamageable
         _characterState = eCharacterState.Moving;
 
         _Animator.Play( "WalkingOrc" );
+    }
+
+    private void StartDancing()
+    {
+        _characterState = eCharacterState.Dancing;
+
+        _Animator.Play( "dance" );
     }
 
     private void Die()

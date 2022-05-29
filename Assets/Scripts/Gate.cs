@@ -13,6 +13,9 @@ public class Gate : MonoBehaviour, IDamageable
     [SerializeField]
     private float _ElevationTime = 1.0f;
 
+    [SerializeField]
+    private AudioClip _AudioClip = null;
+    
     public float MaxHealth { get => _MaxHealth; set => _MaxHealth = value; }
     public float Health { get; set; }
 
@@ -77,6 +80,12 @@ public class Gate : MonoBehaviour, IDamageable
 
     public void RaiseTheBarrier()
     {
+        var clipPosition = Camera.main.transform.position;
+        if( _AudioClip != null )
+        {
+            AudioSource.PlayClipAtPoint( _AudioClip, clipPosition );
+        }
+
         _timeElapsed = 0.0f;
         _startElevation = transform.position.y;
         _endElevation = _startElevation + _ElevationOffset;

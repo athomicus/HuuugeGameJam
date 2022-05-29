@@ -33,7 +33,7 @@ public class AudioPlayer : MonoBehaviour
         var clipPosition = Camera.main.transform.position;
         if(clip!=null)
         {
-            AudioSource.PlayClipAtPoint(clip,clipPosition, volume);
+            AudioSource.PlayClipAtPoint(clip,clipPosition);
         }
 
     }

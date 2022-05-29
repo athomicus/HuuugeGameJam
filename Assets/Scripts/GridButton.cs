@@ -23,7 +23,14 @@ public class GridButton : Button
             ObjectAtButton = null;
         }
 
-            // We click an empty field.
+        if( _selectedObject != null && _selectedObject.knight.Health == 0 )
+        {
+            UnhighlightAvailableButtons();
+
+            _selectedObject = null;
+        }
+
+        // We click an empty field.
         if( _selectedObject == null && ObjectAtButton == null ) return;
 
         // We tried to move the knight at the same position it is in,

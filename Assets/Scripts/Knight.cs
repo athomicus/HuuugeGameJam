@@ -73,6 +73,16 @@ public class Knight : MonoBehaviour, IDamageable
         _Animator.Play( "death" );
     }
 
+
+    private void PlaySound( AudioClip clip )
+    {
+        var clipPosition = Camera.main.transform.position;
+        if( clip != null )
+        {
+            AudioSource.PlayClipAtPoint( clip, clipPosition );
+        }
+    }
+
     private void Awake()
     {
         Health = MaxHealth;
@@ -157,4 +167,4 @@ public class Knight : MonoBehaviour, IDamageable
     }
 
 }
-public enum eCharacterState { Attacking, Moving, Dead }
+public enum eCharacterState { Attacking, Moving, Dead, Dancing }
