@@ -17,6 +17,12 @@ public class GridButton : Button
 
     public void ClickButton()
     {
+            // If the knight at this place is dead, remove them from the button.
+        if( ObjectAtButton != null && ObjectAtButton.knight.Health == 0 )
+        {
+            ObjectAtButton = null;
+        }
+
             // We click an empty field.
         if( _selectedObject == null && ObjectAtButton == null ) return;
 
@@ -65,6 +71,9 @@ public class GridButton : Button
 
             return;
         }
+
+        UnhighlightAvailableButtons();
+        _selectedObject = null;
     }
 
     private void SetButtonColour( Vector2Int pos, Color colour )
@@ -84,7 +93,8 @@ public class GridButton : Button
 
                 var pos = new Vector2Int( i, j );
 
-                if( Grid[ i, j ].ObjectAtButton != null && pos != GridPosition ) continue;
+                if( Grid[ i, j ].ObjectAtButton != null && pos != GridPosition
+                         && Grid[ i, j ].ObjectAtButton.knight.Health != 0 ) continue;
 
                 Color colour = Color.green;
 

@@ -36,7 +36,13 @@ public class Knight : MonoBehaviour, IDamageable
     public void Damage( float damage )
     {
         Health -= damage;
-        Health = Mathf.Clamp( Health, 0, MaxHealth );
+        Health = Mathf.Min( Health, MaxHealth );
+
+        if( Health > 0 ) return;
+
+        Health = 0.0f;
+
+        StartDying();
     }
 
     public void StartMoving( Vector3 target_pos )
@@ -59,10 +65,15 @@ public class Knight : MonoBehaviour, IDamageable
 
     public void StartDying()
     {
+        _knightState = eCharacterState.Dead;
+
+            // Disable the collider.
+        GetComponent<CapsuleCollider>().enabled = false;
+
         _Animator.Play( "death" );
     }
 
-    private void Start()
+    private void Awake()
     {
         Health = MaxHealth;
 

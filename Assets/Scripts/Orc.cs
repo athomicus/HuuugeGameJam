@@ -1,10 +1,12 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Orc : MonoBehaviour, IDamageable
 {
     public float damage = 10.0f;
+
+    public static event Action OnDeath;
 
     [SerializeField]
     private float _MovingSpeed = 2.0f;
@@ -55,10 +57,16 @@ public class Orc : MonoBehaviour, IDamageable
     {
         Health -= damage;
 
-        Health = Mathf.Clamp( Health, 0, MaxHealth );
+        Health = Mathf.Min( Health, MaxHealth );
+
+        if( Health > 0 ) return;
+
+        Health = 0;
+
+        Die();
     }
 
-    private void Start()
+    private void Awake()
     {
         Health = MaxHealth;
 
@@ -128,6 +136,26 @@ public class Orc : MonoBehaviour, IDamageable
         _Animator.Play( "WalkingOrc" );
     }
 
+    private void Die()
+    {
+        OnDeath?.Invoke();
+
+        _characterState = eCharacterState.Dead;
+
+        GetComponent<CapsuleCollider>().enabled = false;
+
+        _Animator.Play( "death" );
+    }
+
+    private void Disappear()
+    {
+        _characterState = eCharacterState.Dead;
+
+        _Animator.Play( "disappear" );
+    }
+
+    private void Destroy() => Destroy( this.gameObject );
+
     private void Attack()
     {
         int n = Physics.OverlapCapsuleNonAlloc( transform.position, EndPoint, _AttackRadius, _colliderBuffer );
@@ -152,9 +180,17 @@ public class Orc : MonoBehaviour, IDamageable
             hit_knights += col.GetComponent<Knight>() != null ? 1 : 0;
         }
 
+            // Nothing is standing in front of the orc, keep moving.
         if( hit_knights == 0 && hit_objects == 0 )
         {
             StartMoving();
+            return;
+        }
+
+            // Hit the gate.
+        if( hit_knights != hit_objects )
+        {
+            Disappear();
             return;
         }
     }

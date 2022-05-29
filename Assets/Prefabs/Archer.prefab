@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Animator: {fileID: 0}
-  _MoveTime: 5
+  _MoveTime: 0.1
   _Damage: 0
   _AttackDistance: 2
   _AttackRadius: 1

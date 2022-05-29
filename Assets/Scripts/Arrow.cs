@@ -31,20 +31,19 @@ public class Arrow : MonoBehaviour
         direction = transform.forward;
         this.transform.Translate( Vector3.forward * Time.deltaTime  * speed, Space.Self  );
        
-       bool wasHit = Physics.SphereCast(origin,sphereRadius,direction,out hitInfo,maxDistance);
-        
-            if(wasHit)
-            {
-                //Orc was hit
-               // Orc hittedOrc =_rayCastHitBuffer[i].collider.GetComponent<Orc>();
-               // hittedOrc.Damage(damage);
-                Debug.Log(hitInfo.collider.name);
-                hitInfo.collider.GetComponent<Orc>().Damage(damage);
-            
+        bool wasHit = Physics.SphereCast(origin,sphereRadius,direction,out hitInfo,maxDistance);
 
-            }
+        if( !wasHit ) return;
 
-           
+
+        Orc orc = hitInfo.collider.GetComponent<Orc>();
+
+        if( !orc ) return;
+
+        orc.Damage( damage );
+
+            // Kill the arrow
+        Destroy( this.gameObject );
     }
 
  private void OnDrawGizmosSelected()
