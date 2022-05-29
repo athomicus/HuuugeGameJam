@@ -30,27 +30,6 @@ public class Orc : MonoBehaviour, IDamageable
 
     private Vector3 EndPoint => transform.position + Vector3.forward * ( _AttackDistance - _AttackRadius );
 
-    private void OnDrawGizmos()
-    {
-        var colour = Color.magenta;
-        colour.a = .5f;
-
-        Gizmos.color = colour;
-
-        Gizmos.DrawSphere( transform.position, _AttackRadius );        
-        Gizmos.DrawSphere( EndPoint, _AttackRadius );
-
-        Gizmos.color = Color.red;
-        var offset = Vector3.up * _AttackRadius;
-        Gizmos.DrawLine( transform.position + offset, EndPoint + offset );
-        offset = Vector3.left * _AttackRadius;
-        Gizmos.DrawLine( transform.position + offset, EndPoint + offset );
-        offset = Vector3.right * _AttackRadius;
-        Gizmos.DrawLine( transform.position + offset, EndPoint + offset );
-        offset = Vector3.down * _AttackRadius;
-        Gizmos.DrawLine( transform.position + offset, EndPoint + offset );
-    }
-
     [SerializeField]
     private float _MaxHealth = 100.0f;
 

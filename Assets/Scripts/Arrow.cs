@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    
-    
     public float damage = 3;
     [SerializeField]
     float speed = 1.0f;
@@ -44,15 +42,5 @@ public class Arrow : MonoBehaviour
 
             // Kill the arrow
         Destroy( this.gameObject );
-    }
-
- private void OnDrawGizmosSelected()
-   {
-        Gizmos.color = new Color( 1, 0, 0, .75f );
-        Gizmos.DrawLine( transform.position, transform.position + transform.forward * maxDistance );
-   }
-         
- 
-
-    
+    } 
 }

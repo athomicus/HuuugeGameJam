@@ -103,11 +103,11 @@ public class GridButton : Button
                 if( Grid[ i, j ].ObjectAtButton != null && pos != GridPosition
                          && Grid[ i, j ].ObjectAtButton.knight.Health != 0 ) continue;
 
-                Color colour = Color.green;
+                Color colour = new Color( .03f, 1, .27f, .43f );
 
                 if( pos == GridPosition )
                 {
-                    colour = Color.cyan;
+                    colour = new Color( .03f, .88f, 1, .43f );
                 }
 
                 SetButtonColour( pos, colour );
@@ -125,7 +125,7 @@ public class GridButton : Button
                 if( i < 0 || j < 0 ) continue;
                 if( i >= Grid.GetLength( 0 ) || j >= Grid.GetLength( 1 ) ) continue;
 
-                SetButtonColour( new Vector2Int( i, j ), Color.white );
+                SetButtonColour( new Vector2Int( i, j ), new Color( 0, 0, 0, .43f ) );
             }
         }
     }

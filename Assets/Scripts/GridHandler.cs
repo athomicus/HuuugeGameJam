@@ -51,8 +51,6 @@ public class GridHandler : MonoBehaviour
                 button.GridPosition = new Vector2Int( i, j );
 
                 button.onClick.AddListener( button.ClickButton );
-
-                button.GetComponentInChildren<Text>().text = new Vector2Int( i, j ).ToString();
             }
         }
     }
