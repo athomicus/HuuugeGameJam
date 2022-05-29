@@ -8,6 +8,10 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] AudioClip shootArrowClip;
     [SerializeField] [Range(0f,1f)] float shootingVolume = 1f;
 
+    [Header("ClangSword")]
+    [SerializeField] AudioClip ClangSword;
+    [SerializeField] [Range(0f,1f)] float ClangSwordVolume = 1f;
+
     
 
    
@@ -15,7 +19,12 @@ public class AudioPlayer : MonoBehaviour
     {
         PlayClip(shootArrowClip, shootingVolume);
     }
+    
 
+    public void PlaySwordClang()
+    {
+        PlayClip(ClangSword, ClangSwordVolume);
+    }
 
    
 
